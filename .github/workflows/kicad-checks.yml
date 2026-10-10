@@ -21,11 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Install Python tooling
-        run: |
-          apt-get update
-          apt-get install -y --no-install-recommends python3-pip
-
       - name: Make scripts executable
         run: chmod +x scripts/*.sh
 

@@ -80,6 +80,7 @@ fi
 BASE="${PROJECT_PATH%.kicad_pro}"
 PCB_FILE="${BASE}.kicad_pcb"
 mkdir -p "$OUT_DIR/gerbers"
+mkdir -p "$OUT_DIR/drill"
 LOG_FILE="$OUT_DIR/export.log"
 
 if ! command -v kicad-cli >/dev/null 2>&1; then
