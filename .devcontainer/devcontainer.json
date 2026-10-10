@@ -1,0 +1,9 @@
+{
+  "name": "qyt-kicad",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "remoteUser": "root",
+  "postCreateCommand": "bash scripts/verify-environment.sh --report-dir /tmp/kicad-verify"
+}
