@@ -1,36 +1,67 @@
-# QYT-8900D_Breakout
+# QYT-8900D AOC Interface Research Platform
 
-## Original Project Goals (Historical Context)
+## Overview
 
-Before the project direction changed, this repository was intended to document and produce a simple breakout board that:
+This project has evolved from a simple microphone interface breakout into a more ambitious radio signal research platform. The current goal is to build a man-in-the-middle device using the N6AD AOC circuit concept as a foundation for reverse engineering the microphone interface and exploring radio control behavior.
 
-- Inserts between the microphone and radio connection
-- Uses RJ-45 jacks for inline microphone/radio pass-through
-- Provides phone jack connections for attaching a recording device
+The design is intended to sit in-line between a handheld microphone and the radio, or between an external audio source and the microphone input, allowing observation, capture, and controlled manipulation of microphone audio and associated control lines.
 
-This README update preserves the original design intent so it remains part of the project history as later revisions introduce new goals.
+## New project goals
 
-Historical build notes from the original effort:
+1. Leverage the N6AD AOC circuitry as a reference architecture for audio and control interface monitoring.
+2. Build a man-in-the-middle adapter to observe and capture microphone audio without permanently altering the radio or microphone.
+3. Reverse engineer the QYT microphone interface behavior and signal conventions.
+4. Identify and document the audio path, PTT handling, and microphone ground/line control relationships.
+5. Explore the feasibility of implementing basic CAT control or remote radio control functions through the same interface concepts.
+6. Use the project as a practical platform for learning serial/control signaling, mic ICD analysis, and radio hardware experimentation.
 
-- The board was fabricated and assembled.
-- The phone-jack cutouts had to be expanded to accommodate plug housings.
-- Functional testing was started but not completed.
+## Why this direction
 
-## Current Repository State (KiCad Files)
+The original breakout board idea was useful for simple recording and interface convenience. The current direction shifts toward deeper radio analysis and experimentation:
 
-The checked-in hardware design files currently reflect a KiCad project named `2021_QYT_Rec_interface`:
+- microphone ICD reverse engineering
+- signal tracing across the hand mic and radio side
+- controlled insertion of test equipment or analysis hardware
+- investigation of AOC-style control ideas for practical ham radio experimentation
 
-- Schematic title: `QYT KT8900D Interface Board` (dated `2021-02-21`)
-- 54 schematic components total, including:
-  - 2x TE `2041411-1` connectors (RJ-45 style interface connectors)
-  - 3x CUI `SJ2-35825D-SMT-TR` phone jack connectors
-  - 14x `Jumper_NC_Small` solder jumpers
-  - 26x test points
-  - 4x resistors
-- A routed PCB layout (`2021_QYT_Rec_interface.kicad_pcb`) matching this interface-board design
-- Silkscreen and metadata details visible in the KiCad files:
-  - Schematic revision field is blank (`Rev ""`) in `2021_QYT_Rec_interface.sch`
-  - Schematic date is `2021-02-21`
-  - Back silkscreen includes board-identification text, author attribution, repo URL, and a Creative Commons BY-SA notice
+This makes the board more than just a passive adapter: it becomes a research and test fixture for disciplined signal analysis.
 
-This section captures what is currently represented in-repo so historical intent and present design artifacts remain aligned.
+## Intended functionality
+
+The revised design should support the following concepts:
+
+- Passive or buffered insertion between the microphone and the radio
+- Access to microphone audio, PTT, ground, and auxiliary lines
+- Recording or monitoring of audio on the mic path
+- Ability to inject test audio or simulate microphone behavior
+- Optional control line observation and experimentation
+- A platform for testing CAT-like control ideas in a controlled environment
+
+## Relationship to the original board
+
+The original QYT-8900D breakout board was a straightforward pass-through interface with RJ-45 and phone-jack access for recording and testing. That original concept remains historically relevant, but the current direction reuses the same general spirit of interface access while adding a much more analytical and experimental purpose.
+
+The older design remains as a reference for the board's original telemetry and breakout organization, while the new work focuses on:
+
+- signal-level investigation
+- interface documentation
+- non-destructive testing on live radio hardware
+- process-oriented reverse engineering
+
+## Research and experimentation focus
+
+This project is intended to serve as a practical platform for:
+
+- tracing microphone signal paths
+- measuring audio voltage levels and biasing
+- observing switch and control line behavior
+- testing AOC-derived circuit ideas in real hardware
+- studying basic CAT control interfaces for a transceiver
+
+## Safety and scope
+
+This project is experimental and intended for low-voltage signal-level work only. It is not designed for direct high-power or hazardous RF modifications. The board is best used as a measurement and analysis tool for lab or bench work.
+
+## Notes
+
+This README reflects the current project direction and supersedes the earlier, simpler breakout-board description. The original revision-based historical documentation remains available in the dated archive files for reference.
