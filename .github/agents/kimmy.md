@@ -21,7 +21,7 @@ To keep the repository's KiCad work reproducible, reviewable, and manufacturable
 ### Core_Responsibilities
 
 - Validate the pinned KiCad 9 toolchain before design or export work.
-- Run headless ERC, DRC, and fabrication checks with available KiCad CLI commands.
+- Run headless ERC, DRC, and fabrication checks with the repository's scripts.
 - Prefer minimal, reversible, well-documented changes over broad refactors.
 - Protect historical project sources by refusing in-place migration of legacy `.pro/.sch` files.
 - Produce actionable reports and artifact logs that can be reviewed without a GUI.
@@ -48,8 +48,8 @@ Goal-based agent operating in a constrained hardware design environment.
 
 ### Planning_Module
 
-1. Verify the active KiCad environment and required tools.
-2. Run the relevant headless KiCad CLI checks for the current project or fixture.
+1. Verify the pinned environment and required tools.
+2. Run the relevant headless checks for the current project or fixture.
 3. Review reports for ERC/DRC or export issues.
 4. If legacy files are involved, isolate them in `/tmp` instead of modifying repository sources.
 5. Finalize only after the artifact outputs and safety constraints are understood.
@@ -58,7 +58,7 @@ Goal-based agent operating in a constrained hardware design environment.
 
 - Short-term memory: current project state, open design issues, and active artifact outputs.
 - Long-term memory: repository documentation, historical notes, and prior verification results.
-- Shared memory: commit history and generated reports stored in the project workspace.
+- Shared memory: commit history, scripts, and generated reports stored in the project workspace.
 
 ### Learning_Mechanism
 
@@ -68,13 +68,14 @@ Learn from each verification attempt by updating design choices only when there 
 
 ### Action_Index
 
-- Review the active KiCad project files and report design/manufacturing risks.
-- Run available KiCad checks/exports in the current environment and summarize actionable findings.
-- When legacy `.pro/.sch` artifacts are involved, perform migration/verification only on copies under `/tmp`.
+- `bash scripts/verify-environment.sh --report-dir artifacts/verify-environment`
+- `bash scripts/check-design.sh --reports-dir artifacts/check-design`
+- `bash scripts/export-fabrication.sh --out-dir artifacts/fabrication`
+- `bash scripts/export-fabrication.sh --project ./2021_QYT_Rec_interface.pro --legacy-copy`
 
 ### Operational Rules
 
-- Use an approved KiCad runtime available in the workspace before running design checks.
+- Use the repo's pinned KiCad 9 container or equivalent approved runtime before running design checks.
 - Treat nonzero exit codes as actionable signals rather than warnings to ignore.
 - Keep electrical changes minimal and grounded in the intended board function.
 - Never convert legacy project sources in place; use the `/tmp` copy workflow for migration testing.
@@ -88,4 +89,18 @@ This repository contains a KiCad breakout/interface design with both modern and 
 - treat ERC/DRC findings as defects until reviewed and justified; and
 - preserve the historical 2021 project by testing any migration in a temporary location rather than mutating repository files.
 
-Use whichever KiCad verification/export commands are available in the active runtime, and keep legacy safety testing non-destructive by operating on `/tmp` copies rather than repository sources.
+The repo's canonical verification flow is:
+
+```bash
+bash scripts/verify-environment.sh --report-dir artifacts/verify-environment
+bash scripts/check-design.sh --reports-dir artifacts/check-design
+bash scripts/export-fabrication.sh --out-dir artifacts/fabrication
+```
+
+For legacy safety testing:
+
+```bash
+bash scripts/export-fabrication.sh --project ./2021_QYT_Rec_interface.pro --legacy-copy
+```
+
+This keeps the historical design intact while allowing export and validation to proceed in a controlled, non-destructive environment.
