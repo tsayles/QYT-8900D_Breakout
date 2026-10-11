@@ -11,7 +11,7 @@ The repository's specialist hardware agent is `@Kimmy`, defined in `.github/agen
 Kimmy is responsible for:
 
 - using an approved KiCad environment for reproducible design work;
-- validating toolchain/report outputs before making design changes; and
+- validating toolchain/report outputs with the tooling available in the current workspace before making design changes; and
 - handling legacy `.pro/.sch` sources without modifying the historical repository files in place.
 
 ## Legacy project safety

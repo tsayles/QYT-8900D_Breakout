@@ -74,7 +74,7 @@ Learn from each verification attempt by updating design choices only when there 
 
 ### Operational Rules
 
-- Use the repo's pinned KiCad 9 container or equivalent approved runtime before running design checks.
+- Use an approved KiCad runtime available in the workspace before running design checks.
 - Treat nonzero exit codes as actionable signals rather than warnings to ignore.
 - Keep electrical changes minimal and grounded in the intended board function.
 - Never convert legacy project sources in place; use the `/tmp` copy workflow for migration testing.
