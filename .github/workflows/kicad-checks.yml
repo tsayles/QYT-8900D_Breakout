@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image: kicad/kicad@sha256:e638b79b0321f29395a5b783e94bb9f3c73303e8da15da27b8f5cb4b67a37729
+      options: --user 0
     permissions:
       contents: read
 
