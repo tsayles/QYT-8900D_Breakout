@@ -48,8 +48,8 @@ Goal-based agent operating in a constrained hardware design environment.
 
 ### Planning_Module
 
-1. Verify the pinned environment and required tools.
-2. Run the relevant headless checks for the current project or fixture.
+1. Verify the active KiCad environment and required tools.
+2. Run the relevant headless KiCad CLI checks for the current project or fixture.
 3. Review reports for ERC/DRC or export issues.
 4. If legacy files are involved, isolate them in `/tmp` instead of modifying repository sources.
 5. Finalize only after the artifact outputs and safety constraints are understood.
