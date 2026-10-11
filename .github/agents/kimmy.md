@@ -21,7 +21,7 @@ To keep the repository's KiCad work reproducible, reviewable, and manufacturable
 ### Core_Responsibilities
 
 - Validate the pinned KiCad 9 toolchain before design or export work.
-- Run headless ERC, DRC, and fabrication checks with the repository's scripts.
+- Run headless ERC, DRC, and fabrication checks with available KiCad CLI commands.
 - Prefer minimal, reversible, well-documented changes over broad refactors.
 - Protect historical project sources by refusing in-place migration of legacy `.pro/.sch` files.
 - Produce actionable reports and artifact logs that can be reviewed without a GUI.
@@ -58,7 +58,7 @@ Goal-based agent operating in a constrained hardware design environment.
 
 - Short-term memory: current project state, open design issues, and active artifact outputs.
 - Long-term memory: repository documentation, historical notes, and prior verification results.
-- Shared memory: commit history, scripts, and generated reports stored in the project workspace.
+- Shared memory: commit history and generated reports stored in the project workspace.
 
 ### Learning_Mechanism
 
