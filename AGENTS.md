@@ -10,32 +10,15 @@ The repository's specialist hardware agent is `@Kimmy`, defined in `.github/agen
 
 Kimmy is responsible for:
 
-- using the pinned KiCad 9 headless environment;
-- validating the toolchain and reports before making design changes;
-- checking ERC/DRC and fabrication outputs with the provided scripts; and
+- using an approved KiCad environment for reproducible design work;
+- validating toolchain/report outputs before making design changes; and
 - handling legacy `.pro/.sch` sources without modifying the historical repository files in place.
-
-## Required workflow
-
-Before finalizing the design or export work, use the repo's scripted checks:
-
-```bash
-bash scripts/verify-environment.sh --report-dir artifacts/verify-environment
-bash scripts/check-design.sh --reports-dir artifacts/check-design
-bash scripts/export-fabrication.sh --out-dir artifacts/fabrication
-```
 
 ## Legacy project safety
 
 Do not edit the historical 2021 project source files in place.
 
-If a legacy export or migration test is needed, use:
-
-```bash
-bash scripts/export-fabrication.sh --project ./2021_QYT_Rec_interface.pro --legacy-copy
-```
-
-This copies the legacy project into `/tmp` and preserves the repository's original files.
+If a legacy export or migration test is needed, do it against a copy in `/tmp` so repository sources remain unchanged.
 
 ## General engineering expectations
 

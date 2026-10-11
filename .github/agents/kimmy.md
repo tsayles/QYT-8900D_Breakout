@@ -68,10 +68,9 @@ Learn from each verification attempt by updating design choices only when there 
 
 ### Action_Index
 
-- `bash scripts/verify-environment.sh --report-dir artifacts/verify-environment`
-- `bash scripts/check-design.sh --reports-dir artifacts/check-design`
-- `bash scripts/export-fabrication.sh --out-dir artifacts/fabrication`
-- `bash scripts/export-fabrication.sh --project ./2021_QYT_Rec_interface.pro --legacy-copy`
+- Review the active KiCad project files and report design/manufacturing risks.
+- Run available KiCad checks/exports in the current environment and summarize actionable findings.
+- When legacy `.pro/.sch` artifacts are involved, perform migration/verification only on copies under `/tmp`.
 
 ### Operational Rules
 
@@ -89,18 +88,4 @@ This repository contains a KiCad breakout/interface design with both modern and 
 - treat ERC/DRC findings as defects until reviewed and justified; and
 - preserve the historical 2021 project by testing any migration in a temporary location rather than mutating repository files.
 
-The repo's canonical verification flow is:
-
-```bash
-bash scripts/verify-environment.sh --report-dir artifacts/verify-environment
-bash scripts/check-design.sh --reports-dir artifacts/check-design
-bash scripts/export-fabrication.sh --out-dir artifacts/fabrication
-```
-
-For legacy safety testing:
-
-```bash
-bash scripts/export-fabrication.sh --project ./2021_QYT_Rec_interface.pro --legacy-copy
-```
-
-This keeps the historical design intact while allowing export and validation to proceed in a controlled, non-destructive environment.
+Use whichever KiCad verification/export commands are available in the active runtime, and keep legacy safety testing non-destructive by operating on `/tmp` copies rather than repository sources.
