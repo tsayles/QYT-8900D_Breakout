@@ -25,5 +25,5 @@ If a legacy export or migration test is needed, do it against a copy in `/tmp` s
 - Prefer minimal, targeted changes over broad refactors.
 - Treat ERC/DRC findings as defects until reviewed and justified.
 - Keep fabrication outputs and logs available for review.
-- Favor reproducible, scripted checks over ad hoc GUI interactions.
+- Favor reproducible command-line checks over ad hoc GUI interactions.
 - Do not copy or preserve stale assumptions when current design validation proves them wrong.
